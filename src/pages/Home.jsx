@@ -2,9 +2,16 @@ import React, { useEffect, useState } from 'react'
 import { FaPlus } from "react-icons/fa6";
 import { MdDelete } from 'react-icons/md';
 import { Link } from 'react-router-dom'
+import { toast } from 'react-toastify';
 
 const Home = () => {
     const [notes, setNotes] = useState([]);
+    const handleDelete = (id) => {
+        const newNotes = notes.filter(note => note.id !== id);
+        setNotes(newNotes);
+        localStorage.setItem('notesbooth-notes-data', JSON.stringify(newNotes));
+        toast.success('Note deleted');
+    }
 
     useEffect(() => {
         const localNoteData = localStorage.getItem('notesbooth-notes-data');
@@ -35,7 +42,7 @@ const Home = () => {
                                         <span className='pl-1'>{props.body}</span>
                                     </div>
                                     <div className='absolute bottom-1 right-1 w-full p-1 flex items-center justify-end'>
-                                        <span className='text-2xl'>
+                                        <span className='text-2xl' onClick={() => handleDelete(props.id)}>
                                             <MdDelete />
                                         </span>
                                     </div>
