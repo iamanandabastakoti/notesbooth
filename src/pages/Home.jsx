@@ -1,4 +1,6 @@
 import React from 'react'
+import { FaPlus } from "react-icons/fa6";
+import { Link } from 'react-router-dom'
 
 const Home = () => {
     return (
@@ -14,6 +16,9 @@ const Home = () => {
                 </div>
                 {/* notes-card-ends */}
             </div>
+            <Link to={'/addnote'} className='bg-buttonColor rounded-full p-1 text-primaryBg text-4xl fixed bottom-10 right-10'>
+                <FaPlus />
+            </Link>
         </div>
     )
 }
