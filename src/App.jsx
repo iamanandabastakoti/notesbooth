@@ -6,6 +6,7 @@ import { Route, Routes } from 'react-router-dom'
 import Addnote from './pages/Addnote'
 import { ToastContainer, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Viewnote from './pages/Viewnote'
 
 const App = () => {
   return (
@@ -14,6 +15,8 @@ const App = () => {
       <Routes>
         <Route index element={<Home />} />
         <Route path='/addnote' element={<Addnote />} />
+        <Route path='/note/:noteID' element={<Viewnote />} />
+
       </Routes>
       <Footer />
       <ToastContainer

@@ -37,10 +37,20 @@ const Home = () => {
                         notes.map((props, index) => {
                             return (
                                 <div key={index} className='relative p-2 rounded-xl flex flex-col min-h-40 h-60 overflow-hidden w-[46%] bg-mainColor text-primaryBg'>
-                                    <div className='flex flex-col h-[85%] py-1'>
-                                        <span className={`font-semibold ${props.title !== '' && ' border-b'}`}>{props.title}</span>
-                                        <span className='pl-1'>{props.body}</span>
-                                    </div>
+                                    <Link to={`/note/${props.id}`} className='flex flex-col h-[85%] py-1'>
+                                        <span className={`font-semibold ${props.title !== '' && ' border-b'}`} style={{
+                                            WebkitLineClamp: 1,
+                                            WebkitBoxOrient: 'vertical',
+                                            overflow: 'hidden',
+                                            display: '-webkit-box'
+                                        }}>{props.title}</span>
+                                        <span className='pl-1' style={{
+                                            WebkitLineClamp: 6,
+                                            WebkitBoxOrient: 'vertical',
+                                            overflow: 'hidden',
+                                            display: '-webkit-box'
+                                        }}>{props.body}</span>
+                                    </Link>
                                     <div className='absolute bottom-1 right-1 w-full p-1 flex items-center justify-end'>
                                         <span className='text-2xl' onClick={() => handleDelete(props.id)}>
                                             <MdDelete />
